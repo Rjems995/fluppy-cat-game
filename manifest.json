@@ -1,0 +1,43 @@
+{
+  "name": "Pluffy Bird: Flappy Cat Edition",
+  "short_name": "Pluffy Bird",
+  "description": "An adorable Flappy Bird game where you pilot Pluffy — a chubby, winged kitty — through a sky full of scratching posts. Collect golden fish cookies and catnip stars for bonus points!",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FFEAA7",
+  "theme_color": "#FF7675",
+  "categories": ["games", "entertainment"],
+  "icons": [
+    {
+      "src": "icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "screenshot.png",
+      "sizes": "800x600",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "Pluffy Bird gameplay"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Play Now",
+      "short_name": "Play",
+      "description": "Jump straight into Pluffy Bird",
+      "url": "./index.html",
+      "icons": [{ "src": "icons/icon-192.svg", "sizes": "192x192" }]
+    }
+  ]
+}

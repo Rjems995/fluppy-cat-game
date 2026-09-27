@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background rounded square -->
+  <rect width="512" height="512" rx="110" fill="url(#bgGrad)"/>
+  <defs>
+    <radialGradient id="bgGrad" cx="50%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#FFEAA7"/>
+      <stop offset="100%" stop-color="#FF7675"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Cat body (chubby) -->
+  <ellipse cx="256" cy="310" rx="115" ry="105" fill="#F4A261"/>
+
+  <!-- Cat head -->
+  <ellipse cx="256" cy="205" rx="110" ry="100" fill="#F4A261"/>
+
+  <!-- Cat ears -->
+  <polygon points="165,135 145,75 205,120" fill="#F4A261"/>
+  <polygon points="347,135 367,75 307,120" fill="#F4A261"/>
+  <!-- Inner ears -->
+  <polygon points="170,128 156,90 200,118" fill="#FF8FA3"/>
+  <polygon points="342,128 356,90 312,118" fill="#FF8FA3"/>
+
+  <!-- Face: eyes -->
+  <ellipse cx="220" cy="205" rx="18" ry="20" fill="#2D3436"/>
+  <ellipse cx="292" cy="205" rx="18" ry="20" fill="#2D3436"/>
+  <!-- Eye shine -->
+  <ellipse cx="226" cy="198" rx="6" ry="6" fill="white"/>
+  <ellipse cx="298" cy="198" rx="6" ry="6" fill="white"/>
+
+  <!-- Nose -->
+  <ellipse cx="256" cy="228" rx="10" ry="7" fill="#FF8FA3"/>
+  <!-- Mouth -->
+  <path d="M 248 235 Q 256 244 264 235" stroke="#E17055" stroke-width="3" fill="none" stroke-linecap="round"/>
+
+  <!-- Whiskers left -->
+  <line x1="150" y1="220" x2="238" y2="228" stroke="#2D3436" stroke-width="2.5" opacity="0.5"/>
+  <line x1="150" y1="235" x2="238" y2="233" stroke="#2D3436" stroke-width="2.5" opacity="0.5"/>
+  <!-- Whiskers right -->
+  <line x1="362" y1="220" x2="274" y2="228" stroke="#2D3436" stroke-width="2.5" opacity="0.5"/>
+  <line x1="362" y1="235" x2="274" y2="233" stroke="#2D3436" stroke-width="2.5" opacity="0.5"/>
+
+  <!-- Wings (angel wings) -->
+  <ellipse cx="128" cy="280" rx="80" ry="45" fill="white" opacity="0.92" transform="rotate(-20,128,280)"/>
+  <ellipse cx="384" cy="280" rx="80" ry="45" fill="white" opacity="0.92" transform="rotate(20,384,280)"/>
+
+  <!-- Tail -->
+  <path d="M 340 380 Q 420 360 400 420 Q 380 460 330 440" fill="#F4A261" stroke="#E07B3C" stroke-width="2"/>
+
+  <!-- Stars sparkle -->
+  <text x="60" y="100" font-size="42" opacity="0.8">✨</text>
+  <text x="380" y="95" font-size="32" opacity="0.7">⭐</text>
+</svg>

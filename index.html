@@ -1,114 +1,158 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>Pluffy Bird: Flappy Cat Edition</title>
+
+    <!-- PWA: Manifest & theme -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#FF7675" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="Pluffy Bird" />
+    <link rel="apple-touch-icon" href="icons/icon-192.svg" />
+
     <!-- Google Fonts for cute rounded arcade typography -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <!-- Ambient glowing backdrop blobs -->
     <div class="ambient-bg">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
     </div>
 
     <div class="game-wrapper">
-        <div id="gameContainer">
-            <!-- Main Game Canvas -->
-            <canvas id="gameCanvas"></canvas>
+      <div id="gameContainer">
+        <!-- Main Game Canvas -->
+        <canvas id="gameCanvas"></canvas>
 
-            <!-- Floating Top HUD -->
-            <div class="hud-overlay">
-                <div class="score-badge">
-                    <span class="score-label">Score</span>
-                    <span id="currentScore" class="score-number">0</span>
-                </div>
-                <div class="hud-actions">
-                    <button id="muteBtn" class="ui-btn" title="Mute/Unmute (M)">🔊</button>
-                    <button id="pauseBtn" class="ui-btn" title="Pause (P)">⏸️</button>
-                </div>
-            </div>
-
-            <!-- Start Screen Overlay -->
-            <div id="startScreen" class="overlay-screen">
-                <div class="start-card">
-                    <div class="hero-cat-preview">🐱🪽</div>
-                    <h1 class="game-title">PLUFFY BIRD</h1>
-                    <div class="game-subtitle">Flappy Cat Edition</div>
-
-                    <div class="skin-selector-box">
-                        <div class="skin-label">Choose Your Kitty</div>
-                        <div class="skin-pills">
-                            <button class="skin-pill skin-orange active" data-skin="orange" title="Orange Tabby"></button>
-                            <button class="skin-pill skin-tuxedo" data-skin="tuxedo" title="Tuxedo Cat"></button>
-                            <button class="skin-pill skin-calico" data-skin="calico" title="Sweet Calico"></button>
-                            <button class="skin-pill skin-white" data-skin="white" title="Fluffy Marshmallow"></button>
-                            <button class="skin-pill skin-void" data-skin="void" title="Midnight Void"></button>
-                        </div>
-                    </div>
-
-                    <div class="instruction-pulse">
-                        🐾 Press SPACE or TAP to Flap!
-                    </div>
-
-                    <div class="best-score-preview">
-                        🏆 Best Record: <span id="startHighScore">0</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Pause Screen Overlay -->
-            <div id="pauseOverlay" class="overlay-screen hidden">
-                <div class="pause-card">
-                    <div class="pause-title">PAUSED 🐾</div>
-                    <p class="pause-hint">Press <strong>P</strong>, <strong>ESC</strong>, or Tap to Resume</p>
-                </div>
-            </div>
-
-            <!-- Game Over Screen Overlay -->
-            <div id="gameOverModal" class="overlay-screen hidden">
-                <div class="gameover-card">
-                    <div id="newBestBadge" class="new-best-badge hidden">✨ NEW BEST RECORD! ✨</div>
-                    <h2 class="gameover-header">GAME OVER!</h2>
-
-                    <div class="scoreboard-grid">
-                        <div class="score-col">
-                            <span class="score-col-label">Score</span>
-                            <span id="finalScore" class="score-col-val">0</span>
-                        </div>
-                        <div class="score-col">
-                            <span class="score-col-label">Best</span>
-                            <span id="bestScore" class="score-col-val best">0</span>
-                        </div>
-                    </div>
-
-                    <div class="medal-box">
-                        <div id="medalIcon" class="medal-symbol">🥉</div>
-                        <div class="medal-info">
-                            <div class="medal-subtitle">Rank Award</div>
-                            <div id="medalTitle" class="medal-title">Bronze Bell</div>
-                        </div>
-                    </div>
-
-                    <button id="restartBtn" class="action-btn">
-                        Play Again 🐾
-                    </button>
-                </div>
-            </div>
+        <!-- Floating Top HUD -->
+        <div class="hud-overlay">
+          <div class="score-badge">
+            <span class="score-label">Score</span>
+            <span id="currentScore" class="score-number">0</span>
+          </div>
+          <div class="hud-actions">
+            <button id="muteBtn" class="ui-btn" title="Mute/Unmute (M)">
+              🔊
+            </button>
+            <button id="pauseBtn" class="ui-btn" title="Pause (P)">⏸️</button>
+          </div>
         </div>
 
-        <!-- Desktop keyboard helper -->
-        <div class="controls-hint">
-            <span><span class="key-badge">SPACE</span> or <span class="key-badge">⬆</span> Flap</span>
-            <span><span class="key-badge">P</span> Pause</span>
-            <span><span class="key-badge">M</span> Mute</span>
+        <!-- Start Screen Overlay -->
+        <div id="startScreen" class="overlay-screen">
+          <div class="start-card">
+            <div class="hero-cat-preview">🐱🪽</div>
+            <h1 class="game-title">PLUFFY BIRD</h1>
+            <div class="game-subtitle">Flappy Cat Edition</div>
+
+            <div class="skin-selector-box">
+              <div class="skin-label">Choose Your Kitty</div>
+              <div class="skin-pills">
+                <button
+                  class="skin-pill skin-orange active"
+                  data-skin="orange"
+                  title="Orange Tabby"
+                ></button>
+                <button
+                  class="skin-pill skin-tuxedo"
+                  data-skin="tuxedo"
+                  title="Tuxedo Cat"
+                ></button>
+                <button
+                  class="skin-pill skin-calico"
+                  data-skin="calico"
+                  title="Sweet Calico"
+                ></button>
+                <button
+                  class="skin-pill skin-white"
+                  data-skin="white"
+                  title="Fluffy Marshmallow"
+                ></button>
+                <button
+                  class="skin-pill skin-void"
+                  data-skin="void"
+                  title="Midnight Void"
+                ></button>
+              </div>
+            </div>
+
+            <div class="instruction-pulse">🐾 Press SPACE or TAP to Flap!</div>
+
+            <div class="best-score-preview">
+              🏆 Best Record: <span id="startHighScore">0</span>
+            </div>
+          </div>
         </div>
+
+        <!-- Pause Screen Overlay -->
+        <div id="pauseOverlay" class="overlay-screen hidden">
+          <div class="pause-card">
+            <div class="pause-title">PAUSED 🐾</div>
+            <p class="pause-hint">
+              Press <strong>P</strong>, <strong>ESC</strong>, or Tap to Resume
+            </p>
+          </div>
+        </div>
+
+        <!-- Game Over Screen Overlay -->
+        <div id="gameOverModal" class="overlay-screen hidden">
+          <div class="gameover-card">
+            <div id="newBestBadge" class="new-best-badge hidden">
+              ✨ NEW BEST RECORD! ✨
+            </div>
+            <h2 class="gameover-header">GAME OVER!</h2>
+
+            <div class="scoreboard-grid">
+              <div class="score-col">
+                <span class="score-col-label">Score</span>
+                <span id="finalScore" class="score-col-val">0</span>
+              </div>
+              <div class="score-col">
+                <span class="score-col-label">Best</span>
+                <span id="bestScore" class="score-col-val best">0</span>
+              </div>
+            </div>
+
+            <div class="medal-box">
+              <div id="medalIcon" class="medal-symbol">🥉</div>
+              <div class="medal-info">
+                <div class="medal-subtitle">Rank Award</div>
+                <div id="medalTitle" class="medal-title">Bronze Bell</div>
+              </div>
+            </div>
+
+            <button id="restartBtn" class="action-btn">Play Again 🐾</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Desktop keyboard helper -->
+      <div class="controls-hint">
+        <span
+          ><span class="key-badge">SPACE</span> or
+          <span class="key-badge">⬆</span> Flap</span
+        >
+        <span><span class="key-badge">P</span> Pause</span>
+        <span><span class="key-badge">M</span> Mute</span>
+      </div>
     </div>
 
     <!-- Game Scripts -->
@@ -118,6 +162,21 @@
     <script src="src/collectibles.js"></script>
     <script src="src/obstacles.js"></script>
     <script src="src/game.js"></script>
-</body>
-</html>
 
+    <!-- PWA: Service Worker registration -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("./sw.js")
+            .then((reg) =>
+              console.log("[Pluffy Bird] SW registered:", reg.scope),
+            )
+            .catch((err) =>
+              console.warn("[Pluffy Bird] SW registration failed:", err),
+            );
+        });
+      }
+    </script>
+  </body>
+</html>
